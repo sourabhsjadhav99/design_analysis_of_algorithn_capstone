@@ -47,21 +47,23 @@ function bestfindRelativeRanks(score) {
 
     return athletes.sort((a, b) => a.index - b.index).map(athlete => athlete.rank);
 }
-// The best-case approach uses fewer iterations by directly assigning ranks during the sorting process, leading to potentially better performance.
 
-
-// Worst Case Approach:
-// Create an array of objects where each object contains the athlete's score and their original index in the array.
-// Sort the array of objects in descending order based on scores.
-// Iterate through the sorted array to assign ranks to athletes based on their positions.
-// Return an array of ranks.
-
-// Best Case Approach:
-// Use the map method to create a new array of objects where each object contains the athlete's score, original index, and rank.
-// Sort the array of objects in descending order based on scores.
-// Use map again to generate the final array of ranks based on the sorted array.
-// Return the array of ranks.
 
 
 console.log(bestfindRelativeRanks([5,4,3,2,1]))
-console.log(worstfindRelativeRanks([10,3,8,9,4]))
+// Measure execution time for worst-case scenario
+const startTimeWorst = performance.now();
+worstfindRelativeRanks([5,4,3,2,1]);
+const endTimeWorst = performance.now();
+const executionTimeWorst = endTimeWorst - startTimeWorst;
+console.log(`Execution time for worst-case scenario: ${executionTimeWorst} milliseconds`);
+
+
+console.log(worstfindRelativeRanks([5,4,3,2,1]))
+// Measure execution time for best-case scenario
+const startTimeBest = performance.now();
+bestfindRelativeRanks([5,4,3,2,1]);
+const endTimeBest = performance.now();
+const executionTimeBest = endTimeBest - startTimeBest;
+console.log(`Execution time for best-case scenario: ${executionTimeBest} milliseconds`);
+
